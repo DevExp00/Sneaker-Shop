@@ -37,6 +37,11 @@ function App() {
     setCartItems((prevCartItems) => [...prevCartItems, item]);
   };
 
+  const removeFromCart = (itemId) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(updatedCartItems);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -114,7 +119,7 @@ function App() {
           <Routes>
             <Route
               path="/cart"
-              element={<Cart cartItems={cartItems} />}
+              element={<Cart cartItems={cartItems} removeFromCart={removeFromCart}/>}
             />
           </Routes>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, removeFromCart}) => {
   const calculateTotal = () => {
     const itemsTotal = cartItems.reduce((total, item) => total + item.price, 0);
     return itemsTotal;
@@ -41,12 +41,16 @@ const Cart = ({ cartItems }) => {
                     <td>{item.name}</td>
                     <td>{`Size: ${item.size}`}</td>
                     <td>{`Price: $${item.price}`}</td>
+                    <td>
+                      <button onClick={() => removeFromCart(item.id)} className="btn btn-danger" style={{ width: '30px', paddingLeft: '8px' }}>
+                      <i class="fa-solid fa-x"></i>
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          {/* Добавим блок справа */}
           <div className="col-md-6 col-sm-3">
             <div className="right-block">
               <h2>Amount</h2>
